@@ -1,0 +1,12 @@
+---
+title: "ENVS 4432 Assignment 6 Redden"
+author: "Aiden Redden"
+date: "2025-10-29"
+output: html_document
+---
+
+## Introduction 
+
+## Methods 
+
+## Results and Conclusion
