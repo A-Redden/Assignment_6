@@ -10,8 +10,18 @@ Paper: [@Tsengetal]
 
 ## Introduction
 
+A method for bird sound recognition that is easily accessible and time efficient is needed to help monitoring of avian species. Currently there are a select number of automatic recognizers for bird sound identification, including Merlin Bird ID or BirdNET. These recognizers are limited in the amount of audio they can correctly identify, as they must be validated by a human observer after recognition is run on audio, taking large amounts of time to validate species identifications. Tseng et al. (2025) proposes a solution to this issue using the software BirdNET from Cornell Lab of Ornithology. BirdNET is a open source recognizer used for identifying bird species from audio. The software produces a species identifcation for audio along with a confidence level from zero to one. This confidence level indicates the liklihood of an accurate prediction by BirdNET, with higher values indicating higher prediction accuracy. Confidence scores can be influenced by many factors, including species, background noise, or overlap between calls. Within BirdNET, a threshold may be set to disregard identifications below a certain confidence level, and while this may be useful for certain projects, this may remove true positives from the predictions. The confidence score accuracy will also vary between species, with some species having very low confidence scores will still have correct predictions, while others may have very high confidence levels being false positives. To solve this, creating a species-specific confidence threshold is needed to ensure true positives are kept, while false positives are ignored. This paper aims to propose methodology for use of BirdNET for correct predictions of bird sound using confidence scores to create species-specific thresholds. They used a audio dataset consisting of 66 recording sites and focusing on 19 species with a range of song complexity and singing rates.
+
 ## Methods
+
+##### Study Area
+
+The data was collected in British Columbia, Canada, in 66 sites selected to include a diverse range of forest stands. Each site was located at least two kilometers away from each other to account for the autonomous recording units detection range. One AudioMoth was placed on each site during the breeding season from May - July in 2020 and 2021. The units recorded audio from 4 am to 7 am daily to conincide with peak vocal activity for songbirds. Each unit recorded for a minute and then had four minutes downtime, repeated for the three hour recording period. 36 one minute recordings were collected for each day, per site.
+
+##### Audio processing 
+
+Data was then run through BirdNET Lite. Default settings for the
 
 ## Results and Conclusion
 
-## References 
+## References
