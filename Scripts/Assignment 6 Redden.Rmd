@@ -10,7 +10,7 @@ Paper: [@Tsengetal]
 
 ## Introduction
 
-A method for bird sound recognition that is easily accessible and time efficient is needed to help monitoring of avian species. Currently there are a select number of automatic recognizers for bird sound identification, including Merlin Bird ID or BirdNET. These recognizers are limited in the amount of audio they can correctly identify, as they must be validated by a human observer after recognition is run on audio, taking large amounts of time to validate species identifications. Tseng et al. (2025) proposes a solution to this issue using the software BirdNET from Cornell Lab of Ornithology. BirdNET is a open source recognizer used for identifying bird species from audio. The software produces a species identifcation for audio along with a confidence level from zero to one. This confidence level indicates the liklihood of an accurate prediction by BirdNET, with higher values indicating higher prediction accuracy. Confidence scores can be influenced by many factors, including species, background noise, or overlap between calls. Within BirdNET, a threshold may be set to disregard identifications below a certain confidence level, and while this may be useful for certain projects, this may remove true positives from the predictions. The confidence score accuracy will also vary between species, with some species having very low confidence scores will still have correct predictions, while others may have very high confidence levels being false positives. To solve this, creating a species-specific confidence threshold is needed to ensure true positives are kept, while false positives are ignored. This paper aims to propose methodology for use of BirdNET for correct predictions of bird sound using confidence scores to create species-specific thresholds. They used a audio dataset consisting of 66 recording sites and focusing on 19 species with a range of song complexity and singing rates.
+A method for bird sound recognition that is easily accessible and time efficient is needed to help monitoring of avian species. Currently there are a select number of automatic recognizers for bird sound identification, including Merlin Bird ID or BirdNET. These recognizers are limited in the amount of audio they can correctly identify, as they must be validated by a human observer after recognition is run on audio, taking large amounts of time to validate species identifications. Tseng et al. (2025) proposes a solution to this issue using the software BirdNET from Cornell Lab of Ornithology. BirdNET is a open source recognizer used for identifying bird species from audio. The software produces a species identifcation for audio along with a confidence level from zero to one. This confidence level indicates the liklihood of an accurate prediction by BirdNET, with higher values indicating higher prediction accuracy. Confidence scores can be influenced by many factors, including species, background noise, or overlap between calls. Within BirdNET, a threshold may be set to disregard identifications below a certain confidence level, and while this may be useful for certain projects, this may remove true positives from the predictions. The confidence score accuracy will also vary between species, with some species having very low confidence scores will still have correct predictions, while others may have very high confidence levels being false positives. To solve this, creating a species-specific confidence threshold is needed to ensure true positives are kept, while false positives are ignored.The papers objectives were to compare a universal confidence threshold to a species-specific threshold, and to examine if BirdNET performance is correlated to species call complexity. They used a audio dataset consisting of 66 recording sites and focusing on 19 species with a range of song complexity and singing rates.
 
 ## Methods
 
@@ -20,8 +20,28 @@ The data was collected in British Columbia, Canada, in 66 sites selected to incl
 
 ##### Audio processing 
 
-Data was then run through BirdNET Lite. Default settings for the
+Data was then run through BirdNET Lite. Default settings for BirdNET analysis were used.
+
+##### Target Species 
+
+They selected 19 species with ranging song complexities and singing rates. Multiple metrics were used to compare song complexity.
+
+##### Validation 
+
+Stratified sampling for 0.05 confidence score classes were used for the validation, with bins from 0.1 - 0.15 up to 0.95-1 confidence score. Ten recordings were selected for each bin, resulting in 180 recordings per species. Human observes then validated the species identification, noting true positive or false positive.
+
+##### Calibration curve 
+
+Once validation was complete, a generalized linear model with a binomial distribution was used with the confidence score as the predictor variable and true or false positive as the response variable.
+
+##### Confidence threshold
+
+Two approaches were used for the confidence thresholds. One approach, which is the general confidence threshold of 0.7. The other approach, a species-specific confidence threshold for a minimum precision of 0.9 for species identification.
 
 ## Results and Conclusion
+
+##### Confidence rate and true positives 
+
+They found a positive relationship between confidence score and true positive between all species. Some species saw high true positive rates even with low confidence level, such as Myrtle Warbler (*Setophaga coronata*). Some groups seen a gradual increase in true positive rate in relation to confidence, indicating high levels of confidence are needed to predict the species.
 
 ## References
