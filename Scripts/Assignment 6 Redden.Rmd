@@ -38,10 +38,18 @@ Once validation was complete, a generalized linear model with a binomial distrib
 
 Two approaches were used for the confidence thresholds. One approach, which is the general confidence threshold of 0.7. The other approach, a species-specific confidence threshold for a minimum precision of 0.9 for species identification.
 
-## Results and Conclusion
+## Results
 
 ##### Confidence rate and true positives 
 
-They found a positive relationship between confidence score and true positive between all species. Some species saw high true positive rates even with low confidence level, such as Myrtle Warbler (*Setophaga coronata*). Some groups seen a gradual increase in true positive rate in relation to confidence, indicating high levels of confidence are needed to predict the species.
+They found a positive relationship between confidence score and true positive between all species. Some species saw high true positive rates even with low confidence level, such as Myrtle Warbler (*Setophaga coronata*). Some groups seen a gradual increase in true positive rate in relation to confidence, indicating high levels of confidence are needed to predict the species. Other groups were between these two extremes.
+
+##### Confidence threshold setting
+
+With the default 0.7 threshold, they found a high precision from 0.7 to 1.0. This universal threshold resulted in only 17 percent (14% SE) of BirdNET predictions being kept. Using the species-specific threshold resulted in a precision higher than 0.9. This also retained more predictions, 70 percent (37% SE). Most species had thresholds set lower than 0.35, with only two species, Brown Creeper (*Certhia americana*) and Varied Thrush *(Ixoreus naevius*) needing 0.95 as the confidence threshold.
+
+## Discussion
+
+##### BirdNET performance and thresholds
 
 ## References
