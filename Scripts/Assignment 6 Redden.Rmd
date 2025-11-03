@@ -14,45 +14,45 @@ A method for bird sound recognition that is easily accessible and time efficient
 
 ## Methods
 
-##### Study Area
+#### **Study Area**
 
 The data was collected in British Columbia, Canada, in 66 sites selected to include a diverse range of forest stands. Each site was located at least two kilometers away from each other to account for the autonomous recording units detection range. One AudioMoth was placed on each site during the breeding season from May - July in 2020 and 2021. The units recorded audio from 4 am to 7 am daily to conincide with peak vocal activity for songbirds. Each unit recorded for a minute and then had four minutes downtime, repeated for the three hour recording period. 36 one minute recordings were collected for each day, per site.
 
-##### Audio processing 
+#### **Audio processing**
 
 Data was then run through BirdNET Lite. Default settings for BirdNET analysis were used.
 
-##### Target Species 
+#### **Target Species**
 
 They selected 19 species with ranging song complexities and singing rates. Multiple metrics were used to compare song complexity.
 
-##### Validation 
+#### **Validation**
 
 Stratified sampling for 0.05 confidence score classes were used for the validation, with bins from 0.1 - 0.15 up to 0.95-1 confidence score. Ten recordings were selected for each bin, resulting in 180 recordings per species. Human observes then validated the species identification, noting true positive or false positive.
 
-##### Calibration curve 
+#### **Calibration curve**
 
 Once validation was complete, a generalized linear model with a binomial distribution was used with the confidence score as the predictor variable and true or false positive as the response variable.
 
-##### Confidence threshold
+#### **Confidence threshold**
 
 Two approaches were used for the confidence thresholds. One approach, which is the general confidence threshold of 0.7. The other approach, a species-specific confidence threshold for a minimum precision of 0.9 for species identification.
 
 ## Results
 
-##### Confidence rate and true positives 
+#### **Confidence rate and true positives**
 
-They found a positive relationship between confidence score and true positive between all species. Some species saw high true positive rates even with low confidence level, such as Myrtle Warbler (*Setophaga coronata*). Some groups seen a gradual increase in true positive rate in relation to confidence, indicating high levels of confidence are needed to predict the species. Other groups were between these two extremes.
+They found a positive relationship between confidence score and true positive between all species. Some species saw high true positive rates even with low confidence level, such as Myrtle Warbler (*Setophaga coronata*). Some groups seen a gradual increase in true positive rate in relation to confidence, indicating high levels of confidence are needed to predict the species. Other groups were between these two extremes (Figure 1).
 
-![Fig. 1 Calibration curves for the 19 target species. Compares true positive rate to BirdNET confidence score. This was based on a logistic regression with true positive or false positive as the response variables, with BirdNET confidence as predictor. This was then back-transformed to get the true positive rate. Retrieved from Tseng et al. (2025) figure 4. ](images/Figure 4 Tseng et al.png)
+![**Fig. 1** Calibration curves for the 19 target species. Compares true positive rate to BirdNET confidence score. This was based on a logistic regression with true positive or false positive as the response variables, with BirdNET confidence as predictor. This was then back-transformed to get the true positive rate. Retrieved from Tseng et al. (2025) figure 4.](images/Figure%204%20Tseng%20et%20al.png)
 
-##### Confidence threshold setting
+#### **Confidence threshold setting**
 
 With the default 0.7 threshold, they found a high precision from 0.7 to 1.0. This universal threshold resulted in only 17 percent (14% SE) of BirdNET predictions being kept. Using the species-specific threshold resulted in a precision higher than 0.9. This also retained more predictions, 70 percent (37% SE). Most species had thresholds set lower than 0.35, with only two species, Brown Creeper (*Certhia americana*) and Varied Thrush *(Ixoreus naevius*) needing 0.95 as the confidence threshold.
 
 ## Discussion
 
-##### BirdNET performance and thresholds
+#### **BirdNET performance and thresholds**
 
 The paper found setting species-specific thresholds to be the best option for precision and retaining BirdNET predictions. They suggest setting these thresholds for future use of BirdNET. They also suggest that manually setting thresholds for each project, as the species-specific thresholds calculated by them will differ from other projects due to recording equipment, species composition, and environmental noise and conditions.
 
